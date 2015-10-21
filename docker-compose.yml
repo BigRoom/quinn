@@ -1,0 +1,21 @@
+roomer:
+    build: ../roomer/
+    environment:
+        SERVER: "irc:6667"
+        SERVER_NAME: "192.168.99.100:6667"
+        DISPATCH: "vision:8080"
+    links:
+        - irc
+        - vision
+
+vision:
+    build: ../vision/
+    ports:
+        - "6060:6060"
+    expose:
+        - "8080"
+
+irc:
+    image: yrpri/ngircd
+    ports:
+        - "6667:6667"
