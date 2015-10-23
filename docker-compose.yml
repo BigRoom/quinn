@@ -15,6 +15,11 @@ vision:
     expose:
         - "8080"
 
+quake:
+    build: ../mystique
+    ports:
+        - "80:8080"
+
 irc:
     image: yrpri/ngircd
     ports:
