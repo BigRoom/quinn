@@ -18,6 +18,8 @@ vision:
         - "6060:3000"
     expose:
         - "8080"
+    links:
+        - jarvis
 
 quake:
     build: ../mystique
@@ -30,3 +32,6 @@ irc:
     image: yrpri/ngircd
     ports:
         - "6667:6667"
+
+jarvis:
+    image: postgres
