@@ -4,19 +4,25 @@ roomer:
         SERVER: "irc:6667"
         SERVER_NAME: "192.168.99.100:6667"
         DISPATCH: "vision:8080"
+    volumes:
+        - ../roomer/:/go/src/github.com/bigroom/roomer
     links:
         - irc
         - vision
 
 vision:
     build: ../vision/
+    volumes:
+        - ../vision/:/go/src/github.com/bigroom/vision
     ports:
-        - "6060:6060"
+        - "6060:3000"
     expose:
         - "8080"
 
 quake:
     build: ../mystique
+    volumes:
+        - ../mystique/:/app
     ports:
         - "80:8080"
 
