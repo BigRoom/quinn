@@ -15,10 +15,8 @@ vision:
     volumes:
         - ../vision/:/go/src/github.com/bigroom/vision
         - ../zombies/:/go/src/github.com/bigroom/zombies
-    ports:
-        - "6060:3000"
     expose:
-        - "8080"
+        - "6060"
     links:
         - jarvis
 
@@ -26,8 +24,16 @@ quake:
     build: ../mystique
     volumes:
         - ../mystique/:/app
+    expose:
+        - "8080"
+
+cereal_killer:
+    build: ./nginx
     ports:
-        - "80:8080"
+        - "80:80"
+    links:
+        - vision
+        - quake
 
 irc:
     image: yrpri/ngircd
