@@ -20,7 +20,7 @@ vision:
     links:
         - jarvis
 
-quake:
+mystique:
     build: ../mystique
     volumes:
         - ../mystique/:/app
@@ -33,7 +33,7 @@ cereal_killer:
         - "80:80"
     links:
         - vision
-        - quake
+        - mystique
 
 irc:
     image: yrpri/ngircd
