@@ -16,6 +16,7 @@ vision:
         DEFAULT_IRC: "192.168.99.100"
     volumes:
         - ../vision/:/go/src/github.com/bigroom/vision
+        - ../vision/models/:/go/src/github.com/bigroom/vision/models
         - ../zombies/:/go/src/github.com/bigroom/zombies
     expose:
         - "6060"
