@@ -12,11 +12,14 @@ roomer:
 
 vision:
     build: ../vision/
+    environment:
+        DEFAULT_IRC: "192.168.99.100"
     volumes:
         - ../vision/:/go/src/github.com/bigroom/vision
         - ../zombies/:/go/src/github.com/bigroom/zombies
     expose:
         - "6060"
+        - "8080"
     links:
         - jarvis
 
