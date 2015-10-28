@@ -2,20 +2,28 @@ irc:
   image: 'yrpri/ngircd:latest'
   ports:
     - '6667:6667'
+  tags:
+    - bigroom
 jarvis:
   image: 'postgres:latest'
+  tags:
+    - bigroom
 mystique:
-  image: 'room/mystique:latest'
+  image: 'quay.io/bigroom/mystique:latest'
   expose:
     - '8080'
+  tags:
+    - bigroom
 quinn:
-  image: 'room/quinn:latest'
+  image: 'quay.io/bigroom/quinn:latest'
   links:
     - vision
   ports:
     - '80:80'
+  tags:
+    - bigroom
 roomer:
-  image: 'room/roomer:latest'
+  image: 'quay.io/bigroom/roomer:latest'
   environment:
     - 'DISPATCH=vision:8080'
     - 'SERVER=irc:6667'
@@ -23,8 +31,10 @@ roomer:
   links:
     - irc
     - vision
+  tags:
+    - bigroom
 vision:
-  image: 'room/vision:latest'
+  image: 'quay.io/bigroom/vision:latest'
   environment:
     - DEFAULT_IRC=irc.bigroom.zucchinize20501f8d233b4b5c.svc.tutum.io
   expose:
@@ -32,3 +42,5 @@ vision:
     - '8080'
   links:
     - jarvis
+  tags:
+    - bigroom
