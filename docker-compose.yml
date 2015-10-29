@@ -23,6 +23,7 @@ vision:
         - "8080"
     links:
         - jarvis
+        - pool
 
 mystique:
     build: ../mystique
@@ -47,7 +48,7 @@ irc:
 jarvis:
     image: postgres
 
-etcd:
+store:
     image: quay.io/coreos/etcd:v2.0.8
     environment:
         ETCD_NAME: "etcd0"
@@ -63,3 +64,12 @@ etcd:
         - "2380:2380"
         - "2379:2379"
 
+pool:
+    build: ../zombies/cmd/pool
+    links:
+        - store
+    volumes:
+        - ../zombies/cmd/pool/:/go/src/github.com/bigroom/zombies/cmd/pool
+        - ../zombies:/go/src/github.com/bigroom/zombies
+    expose:
+        - "3001"
