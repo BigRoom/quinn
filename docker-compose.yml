@@ -4,6 +4,8 @@ roomer:
         SERVER: "irc:6667"
         SERVER_NAME: "192.168.99.100:6667"
         DISPATCH: "vision:8080"
+    env_file:
+        - .roomer_env
     volumes:
         - ../roomer/:/go/src/github.com/bigroom/roomer
     links:
@@ -25,7 +27,7 @@ vision:
         - "8080"
     links:
         - jarvis
-        - pool
+        - zombies
 
 mystique:
     build: ../mystique
@@ -66,8 +68,9 @@ store:
         - "2380:2380"
         - "2379:2379"
 
-pool:
+zombies:
     build: ../zombies/cmd/pool
+    env_file: .zombies_env
     links:
         - store
     volumes:
