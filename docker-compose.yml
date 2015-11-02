@@ -1,5 +1,5 @@
 roomer:
-    build: ../roomer/
+    build: ../profx/
     environment:
         SERVER: "irc:6667"
         SERVER_NAME: "192.168.99.100:6667"
@@ -7,7 +7,7 @@ roomer:
     env_file:
         - .roomer_env
     volumes:
-        - ../roomer/:/go/src/github.com/bigroom/profx
+        - ../profx/:/go/src/github.com/bigroom/profx
         - ../vision/models/:/go/src/github.com/bigroom/vision/models
     links:
         - irc
