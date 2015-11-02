@@ -7,10 +7,12 @@ roomer:
     env_file:
         - .roomer_env
     volumes:
-        - ../roomer/:/go/src/github.com/bigroom/roomer
+        - ../roomer/:/go/src/github.com/bigroom/profx
+        - ../vision/models/:/go/src/github.com/bigroom/vision/models
     links:
         - irc
         - vision
+        - jarvis
 
 vision:
     build: ../vision/
