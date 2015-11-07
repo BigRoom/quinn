@@ -4,15 +4,19 @@ roomer:
         SERVER: "irc:6667"
         SERVER_NAME: "192.168.99.100:6667"
         DISPATCH: "vision:8080"
+        CHAN: "#other #roomtest #harrison"
     env_file:
         - .roomer_env
     volumes:
         - ../profx/:/go/src/github.com/bigroom/profx
         - ../vision/models/:/go/src/github.com/bigroom/vision/models
+        - ../../paked/rerun/:/go/src/github.com/paked/rerun
     links:
         - irc
         - vision
         - jarvis
+    expose:
+        - "3000"
 
 vision:
     build: ../vision/
