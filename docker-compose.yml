@@ -25,6 +25,7 @@ vision:
     env_file:
         - .vision_env
     volumes:
+        - ../communicator/:/go/src/github.com/bigroom/communicator
         - ../vision/:/go/src/github.com/bigroom/vision
         - ../vision/models/:/go/src/github.com/bigroom/vision/models
         - ../zombies/:/go/src/github.com/bigroom/zombies
